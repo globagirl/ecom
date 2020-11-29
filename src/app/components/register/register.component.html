@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <h3>Register</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+        <div class="form-group">
+            <label>Full name</label>
+            <input type="text" class="form-control" formControlName="name" aria-describedby="nameHelp" />
+            <div class="text-danger" *ngIf="myname.touched && myname.invalid">
+                <p *ngIf="myname.errors.required">Name is required</p>
+                <p *ngIf="myname.errors.length">Name must be at least 3 characters</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="text" class="form-control" formControlName="username" aria-describedby="emailHelp" />
+            <div class="text-danger" *ngIf="myusername.touched && myusername.invalid">
+                <p *ngIf="myusername.errors.required">Email is required</p>
+                <p *ngIf="myusername.errors.email">Invalid Email</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" />
+            <div class="text-danger" *ngIf="mypassword.touched && mypassword.invalid">
+                <p *ngIf="mypassword.errors.required">Password is required</p>
+                <p *ngIf="mypassword.errors.minlength">
+                    Password must contains at least 8 characters
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword" />
+            <div class="text-danger" *ngIf="myconfpassword.touched && myconfpassword.invalid">
+                <p *ngIf="myconfpassword.errors.required">
+                    Confirm password is required
+                </p>
+            </div>
+            <div *ngIf="myconfpassword.valid && myconfpassword.value != mypassword.value" class="text-danger">
+                The passwords entered do not much
+            </div>
+        </div>
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">
+      Submit
+    </button>
+    </form>
+</div>
+<app-footer></app-footer>
