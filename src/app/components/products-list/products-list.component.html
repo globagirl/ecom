@@ -16,9 +16,7 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Products Management</h1>
-                    <button class="btn btn-info mr-2">
-            <i class="fa fa-plus"></i>
-          </button>
+                    <button routerLink="/products-create" class="btn btn-info mr-2"><i class="fa fa-plus"></i></button>
                 </div>
 
                 <div class="row">
@@ -33,38 +31,37 @@
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
-                                <div class="chart-area">
-                                    <table class="table">
-                                        <thead>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Price</th>
-                                            <th>Category ID</th>
-                                            <th>#</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let product of productsList">
-                                                <td>{{product.id}}</td>
-                                                <td>{{product.name}}</td>
-                                                <td>{{product.description}}</td>
-                                                <td>{{product.price}}</td>
-                                                <td>{{product.category_id}}</td>
-                                                <td>
-                                                    <button class="btn btn-info mr-2">
-                            <i class="fa fa-eye"></i>
-                          </button>
-                                                    <button class="btn btn-warning mr-2">
-                            <i class="fa fa-edit"></i>
-                          </button>
-                                                    <button class="btn btn-danger mr-2">
-                            <i class="fa fa-trash"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Category ID</th>
+                                        <th>#</th>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr *ngFor="let product of productsList | slice: (page-1) * pageSize : page * pageSize">-->
+                                        <tr *ngFor="let product of productsList">
+                                            <td>{{product.id}}</td>
+                                            <td>{{product.name}}</td>
+                                            <td>{{product.description}}</td>
+                                            <td>{{product.price}}</td>
+                                            <td>{{product.category_id}}</td>
+                                            <td>
+                                                <button class=" btn btn-info mr-2 ">
+                                                        <i class="fa fa-eye "></i>
+                                                    </button>
+                                                <button class="btn btn-warning mr-2 ">
+                                                        <i class="fa fa-edit "></i>
+                                                    </button>
+                                                <button class="btn btn-danger mr-2 ">
+                                                        <i class="fa fa-trash "></i>
+                                                    </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -76,13 +73,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
+        <app-footer></app-footer>
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->

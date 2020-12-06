@@ -29,20 +29,68 @@
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
-                                <div class="chart-area">
-                                    <!--
-                                    <form [formGroup]="productForm" (ngSubmit)="newProduct()">
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" class="form-control" formControlName="name" aria-describedby="nameHelp" />
-                                            <div class="text-danger" *ngIf="name.touched && name.invalid">
-                                                <p *ngIf="name.errors.required">Name is required</p>
-                                                <p *ngIf="name.errors.minlength">Name must be at least 3 characters</p>
-                                            </div>
+                                <form [formGroup]="productForm" (ngSubmit)="newProduct()">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" formControlName="name" aria-describedby="nameHelp" />
+                                        <div class="text-danger" *ngIf="productname.touched && productname.invalid">
+                                            <p *ngIf="productname.errors.required">
+                                                Name is required
+                                            </p>
+                                            <p *ngIf="productname.errors.minlength">
+                                                Name must be at least 5 characters
+                                            </p>
+                                            <p *ngIf="productname.errors.pattern">
+                                                Name should not contain special characters
+                                            </p>
                                         </div>
-                                        <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-primary">Submit</button>
-                                    </form>-->
-                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" formControlName="description" aria-describedby="descriptionHelp" />
+                                        <div class="text-danger" *ngIf="
+                        productdecription.touched && productdecription.invalid
+                      ">
+                                            <p *ngIf="productdecription.errors.required">
+                                                Description is required
+                                            </p>
+                                            <p *ngIf="productdecription.errors.minlength">
+                                                Description must be at least 20 characters
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input type="text" class="form-control" formControlName="price" aria-describedby="priceHelp" />
+                                        <div class="text-danger" *ngIf="productprice.touched && productprice.invalid">
+                                            <p *ngIf="productprice.errors.required">
+                                                Price is required
+                                            </p>
+                                            <p *ngIf="productprice.errors.pattern">
+                                                Invalid price format
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Currency</label>
+                                        <select class="form-control" required formControlName="currency">
+                                            <option value="EUR">EUR</option>
+                                            <option value="TND">TND</option>
+                                            <option value="Dollar">Dollar</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select class="form-control" required formControlName="category_id">
+                                            <option *ngFor="let category of categoriesList" value="{{ category.id }}">
+                                                {{ category.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -53,13 +101,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
+        <app-footer></app-footer>
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->

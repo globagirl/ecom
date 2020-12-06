@@ -40,7 +40,7 @@ import { ProductsCreateComponent } from './components/products-create/products-c
     CategoriesCreateComponent,
     CategoriesProductsComponent,
     ProductsListComponent,
-    ProductsCreateComponent
+    ProductsCreateComponent,
   ],
   imports: [
     BrowserModule,

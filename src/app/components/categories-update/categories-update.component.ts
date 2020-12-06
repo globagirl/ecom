@@ -27,7 +27,11 @@ export class CategoriesUpdateComponent implements OnInit {
   ) {
     let categoryFormControls = {
       id: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern("[A-Za-z .'-]+")
+      ]),
     };
     this.updateCategoryForm = fb.group(categoryFormControls);
   }

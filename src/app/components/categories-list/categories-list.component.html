@@ -16,9 +16,7 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Categories Management</h1>
-                    <button routerLink="/categories-create" class="btn btn-info mr-2">
-            <i class="fa fa-plus"></i>
-          </button>
+                    <button routerLink="/categories-create" class="btn btn-info mr-2"><i class="fa fa-plus"></i></button>
                 </div>
 
                 <div class="row">
@@ -47,14 +45,14 @@
                                                 <td>{{ category.name }}</td>
                                                 <td>
                                                     <button [routerLink]="['/category-details', category.id ]" class="btn btn-info mr-2">
-                            <i class="fa fa-eye"></i>
-                          </button>
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
                                                     <button [routerLink]="['/categories-update', category.id ]" class="btn btn-warning mr-2">
-                            <i class="fa fa-edit"></i>
-                          </button>
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
                                                     <button (click)="deleteCategory(category.id)" class="btn btn-danger mr-2">
-                            <i class="fa fa-trash"></i>
-                          </button>
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -64,20 +62,13 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
+        <app-footer></app-footer>
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->

@@ -5,6 +5,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
 
-  constructor(fb: FormBuilder, private as: AuthService,) {
+  constructor(fb: FormBuilder, private as: AuthService,private router: Router) {
     let registerFormControls = {
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       username: new FormControl('', [Validators.required, Validators.email]), //('default value',[])
@@ -52,13 +53,13 @@ export class RegisterComponent implements OnInit {
 
     let user = new User(null, data.name, data.username, data.password);
 
-    console.log(user); //return value sous forme json
+    //console.log(user); //return value sous forme json
 
     //TODO: envoi data vers API
 
     this.as.registerUser(user).subscribe(
       (result) => {
-        console.log(result);
+        this.router.navigateByUrl('/login');
       },
       (error) => {
         console.log(error);

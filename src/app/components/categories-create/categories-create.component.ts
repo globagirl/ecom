@@ -36,7 +36,7 @@ export class CategoriesCreateComponent implements OnInit {
   newCategory(){
     let data = this.categoryForm.value;
     let category = new Category(null, data.name);
-    //console.log(category);
+    
     this.as.addCategory(category).subscribe(
       (result) => {
         this.router.navigateByUrl('/categories-list');

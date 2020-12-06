@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -10,17 +11,17 @@ import { CategoriesService } from 'src/app/services/categories.service';
   './../../../assets/css/sb-admin-2.css',]
 })
 export class CategoriesProductsComponent implements OnInit {
-  category=[];
-  constructor(private cs: CategoriesService, private route:ActivatedRoute) {}
+  category = [];
+  constructor(private cs: CategoriesService, 
+    private route:ActivatedRoute) {}
 
   ngOnInit(): void {
     let idCategory = this.route.snapshot.params.id;
-   
+
     this.cs.getCategoryById(idCategory).subscribe(
      (result) => {
-      let category = result;
-      id:  category.id
-      id:  category.id
+      //this.category =  JSON.parse(result);
+      this.category =  result;
        console.log(result);
      },
     (error) => {
@@ -28,5 +29,4 @@ export class CategoriesProductsComponent implements OnInit {
      }
    );
   }
-
 }

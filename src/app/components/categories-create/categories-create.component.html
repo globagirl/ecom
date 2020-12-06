@@ -28,22 +28,22 @@
                                 </h6>
                             </div>
                             <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <form [formGroup]="categoryForm" (ngSubmit)="newCategory()">
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" class="form-control" formControlName="name" aria-describedby="nameHelp" />
-                                            <div class="text-danger" *ngIf="name.touched && name.invalid">
-                                                <p *ngIf="name.errors.required">Name is required</p>
-                                                <p *ngIf="name.errors.minlength">Name must be at least 3 characters</p>
-                                                <p *ngIf="name.errors.pattern">Name should not contain special characters</p>
-                                            </div>
+                            <form [formGroup]="categoryForm" (ngSubmit)="newCategory()">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control col-4" formControlName="name" aria-describedby="nameHelp" />
+                                        <div class="text-danger" *ngIf="name.touched && name.invalid">
+                                            <p *ngIf="name.errors.required">Name is required</p>
+                                            <p *ngIf="name.errors.minlength">Name must be at least 3 characters</p>
+                                            <p *ngIf="name.errors.pattern">Name should not contain special characters</p>
                                         </div>
-                                        <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-primary">Submit</button>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="card-footer">
+                                    <button type="submit" [disabled]="categoryForm.invalid" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -53,13 +53,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
+        <app-footer></app-footer>
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->

@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @Component({
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
@@ -18,10 +22,11 @@ export class CategoriesListComponent implements OnInit {
   constructor(private cs: CategoriesService, private router: Router) {}
 
   ngOnInit(): void {
+    /*
     setTimeout(() => {
       this.ngOnInit();
-    }, 1000 * 10); //10 is the number of seconds to refresh 
-
+    }, 1000 * 10); //10 is the number of seconds to refresh
+    */
     this.cs.getAllCategories().subscribe(
       (result) => {
         this.categoriesList = result;
@@ -34,15 +39,20 @@ export class CategoriesListComponent implements OnInit {
   }
 
   deleteCategory(id): void {
-   // console.log(id);
-    this.cs.deleteCategory(id).subscribe(
-      (result) => {
-        this.router.navigateByUrl('/categories-list');
-      },
-      (error) => {
-        console.log(error);
-      }
+    let conf = confirm(
+      'Are you sure you want to delete this category ' + id + ' ?'
     );
+    if (conf) {
+      this.cs.deleteCategory(id).subscribe(
+        (result) => {
+          alert('Category Deleted');
+          this.ngOnInit();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   //search function
