@@ -5,6 +5,6 @@ export class Product {
         public description?: String,
         public price?: Number,
         public currency?: String,
-        public categoryId?: Number,
+        public category_id?: Number,
     ){}
 }

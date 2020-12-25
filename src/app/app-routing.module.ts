@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent} from './components/login/login.component';
 import { Page404Component } from './components/page404/page404.component';
 import { RegisterComponent } from './components/register/register.component';
+
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoriesCreateComponent } from './components/categories-create/categories-create.component';
 import { CategoriesUpdateComponent } from './components/categories-update/categories-update.component';
@@ -13,6 +14,9 @@ import { CategoriesProductsComponent } from './components/categories-products/ca
 
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsCreateComponent } from './components/products-create/products-create.component';
+import { ProductImgAddComponent } from './components/product-img-add/product-img-add.component';
+import { ProductsStoreComponent } from './components/products-store/products-store.component';
+import { ProductsStoreDetailsComponent } from './components/products-store-details/products-store-details.component';
 
 import { AuthGuard } from 'src/app/guards/auth.guard'
 const routes: Routes = [
@@ -57,6 +61,21 @@ const routes: Routes = [
   {
     path: 'products-create',
     component: ProductsCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-image',
+    component: ProductImgAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'products-store',
+    component: ProductsStoreComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'products-store-details',
+    component: ProductsStoreDetailsComponent,
     canActivate: [AuthGuard]
   },
   {

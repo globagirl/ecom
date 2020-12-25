@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,11 @@ import { CategoriesProductsComponent } from './components/categories-products/ca
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsCreateComponent } from './components/products-create/products-create.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductImgAddComponent } from './components/product-img-add/product-img-add.component';
+import { ProductsStoreComponent } from './components/products-store/products-store.component';
+import { ProductsStoreDetailsComponent } from './components/products-store-details/products-store-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,9 @@ import { ProductsCreateComponent } from './components/products-create/products-c
     CategoriesProductsComponent,
     ProductsListComponent,
     ProductsCreateComponent,
+    ProductImgAddComponent,
+    ProductsStoreComponent,
+    ProductsStoreDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +56,13 @@ import { ProductsCreateComponent } from './components/products-create/products-c
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

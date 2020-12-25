@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem">
+    <!--sanitizeImageUrl( productDetails.files['0'].fileDownloadUri )-->
+    <img class="card-img-top" src="http:\\127.0.0.1:8088\{{productDetails.files['0'].fileDownloadUri}}" alt=" Card image cap " />
+    <div class="card-body">
+        <h5 class="card-title">{{ productDetails.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{ productDetails.description }}
+        </h6>
+        <p class="card-text">Price: {{ productDetails.price }}</p>
+        <a href="# " class="btn btn-primary">Add to cart</a>
+    </div>
+</div>

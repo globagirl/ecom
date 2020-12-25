@@ -26,11 +26,15 @@
                                 <h6 class="m-0 font-weight-bold text-primary">
                                     Category Details N° {{ category["id"] }}:
                                 </h6>
+                                <a routerLink="/categories-list"><i class="fas fa-reply"></i
+                ></a>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <h6> Products List of : <strong>{{ category[ "name"] }}</strong></h6>
+                                    <h6>
+                                        Products List of : <strong>{{ category["name"] }}</strong>
+                                    </h6>
 
                                     <table class="table">
                                         <thead>
@@ -49,12 +53,11 @@
                                                 <td>{{ product["price"] }}</td>
                                                 <td>TND</td>
                                                 <td>
-                                                    <input type="button" class="btn btn-info" value=">>">
+                                                    <input type="button" class="btn btn-info" value=">>" />
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-
                                 </div>
                             </div>
                         </div>

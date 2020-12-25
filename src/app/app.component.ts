@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 //appcomponent howa esm el component
 export class AppComponent {
+  /*
   //title = 'ecom';
-
   //simple variable
   //optional : String
   public name: String = 'FormaLab'; //; optional
@@ -29,4 +29,5 @@ export class AppComponent {
 
     this.users.splice(this.users.indexOf(theuser), 1);
   }
+*/
 }

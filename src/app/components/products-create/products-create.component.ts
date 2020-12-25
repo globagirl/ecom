@@ -76,17 +76,17 @@ export class ProductsCreateComponent implements OnInit {
   }
 
   newProduct() {
+
     let data= this.productForm.value;
     let product= new Product(null, data.name, data.description, data.price, data.currency, data.category_id)
- 
-    console.log(product);
-
+    //console.log(product);
     this.ps.addProduct(product).subscribe(
       (result) => {
         this.router.navigateByUrl('/products-list');
       },
       (error) => {
         console.log(error);
+        console.log("ERROR add product");
       }
     )
   }

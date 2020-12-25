@@ -23,9 +23,9 @@
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">
-                                    Edit Category
-                                </h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Edit Category</h6>
+                                <a routerLink="/categories-list"><i class="fas fa-reply"></i
+                ></a>
                             </div>
                             <!-- Card Body -->
                             <form [formGroup]="updateCategoryForm" (ngSubmit)="updateCategory()">
@@ -39,12 +39,16 @@
                                         <input type="text" class="form-control" formControlName="name" aria-describedby="nameHelp" />
                                         <div class="text-danger" *ngIf="name.touched && name.invalid">
                                             <p *ngIf="name.errors.required">Name is required</p>
-                                            <p *ngIf="name.errors.minlength">Name must be at least 3 characters</p>
+                                            <p *ngIf="name.errors.minlength">
+                                                Name must be at least 3 characters
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" [disabled]="updateCategoryForm.invalid" class="btn btn-primary">Submit</button>
+                                    <button type="submit" [disabled]="updateCategoryForm.invalid" class="btn btn-primary">
+                    Submit
+                  </button>
                                 </div>
                             </form>
                         </div>

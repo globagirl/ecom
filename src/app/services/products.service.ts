@@ -22,4 +22,11 @@ export class ProductsService {
     let options= new HttpHeaders().set('Authorization', "Bearer "+token)
     return this.http.post<any>(this.ProductsAPI,product, {headers: options});
   }
+
+  deleteProduct(id: Number){
+    let token = localStorage.getItem('mytoken')
+    let options = new HttpHeaders().set('Authorization', 'Bearer ' + token)
+    
+    return this.http.delete<any>(this.ProductsAPI+id, {headers : options });
+  }
 }

@@ -16,21 +16,26 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Products Management</h1>
-                    <button routerLink="/products-create" class="btn btn-info mr-2"><i class="fa fa-plus"></i></button>
+                    <button routerLink="/products-create" class="btn btn-info mr-2">
+            <i class="fa fa-plus"></i>
+          </button>
                 </div>
-
                 <div class="row">
                     <!-- Area Chart -->
                     <div class="col">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">
-                                    Products List
-                                </h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Products List</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
+                                <div *ngIf="alert" class="alert alert-info alert-dimissible fade show" role="alert">
+                                    {{ message }}
+                                    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <table class="table">
                                     <thead>
                                         <th>#</th>
@@ -41,32 +46,32 @@
                                         <th>#</th>
                                     </thead>
                                     <tbody>
-                                        <!-- <tr *ngFor="let product of productsList | slice: (page-1) * pageSize : page * pageSize">-->
-                                        <tr *ngFor="let product of productsList">
-                                            <td>{{product.id}}</td>
-                                            <td>{{product.name}}</td>
-                                            <td>{{product.description}}</td>
-                                            <td>{{product.price}}</td>
-                                            <td>{{product.category_id}}</td>
+                                        <tr *ngFor="let product of productsList | slice: (page - 1) * pageSize:page * pageSize">
+                                            <!--    <tr *ngFor="let product of productsList">-->
+                                            <td>{{ product.id }}</td>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.description }}</td>
+                                            <td>{{ product.price }}</td>
+                                            <td>{{ product.category_id }}</td>
                                             <td>
-                                                <button class=" btn btn-info mr-2 ">
-                                                        <i class="fa fa-eye "></i>
-                                                    </button>
-                                                <button class="btn btn-warning mr-2 ">
-                                                        <i class="fa fa-edit "></i>
-                                                    </button>
-                                                <button class="btn btn-danger mr-2 ">
-                                                        <i class="fa fa-trash "></i>
-                                                    </button>
+                                                <button class="btn btn-info mr-2">
+                          <i class="fa fa-eye"></i>
+                        </button>
+                                                <button class="btn btn-warning mr-2">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                                                <button class="btn btn-danger mr-2" (click)="open(content, product.id)">
+                          <i class="fa fa-trash"></i>
+                        </button>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="productsList.length" aria-label="Default pagination "></ngb-pagination>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -78,3 +83,22 @@
     </div>
     <!-- End of Content Wrapper -->
 </div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <h6>Are you sure you want to delete the product N°: {{ productId }} ?</h6>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">
+      Cancel
+    </button>
+        <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(productId)">
+      Delete
+    </button>
+    </div>
+</ng-template>
